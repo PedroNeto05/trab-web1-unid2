@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server';
-import { getUrl } from '../lib/get-url';
+import { getUrl } from '@/lib/get-url';
 
 export default function middleware(request: NextRequest) {
   const token = request.cookies.get('authjs.session-token');
@@ -9,7 +9,11 @@ export default function middleware(request: NextRequest) {
     (pathname.includes('sign-in') && token) ||
     (pathname.includes('sign-up') && token)
   ) {
-    return NextResponse.redirect(new URL(getUrl('/app')));
+    return NextResponse.redirect(new URL(getUrl('/home')));
+  }
+
+  if (pathname.includes('/home') && !token) {
+    return NextResponse.redirect(new URL(getUrl('/sign-in')));
   }
 }
 

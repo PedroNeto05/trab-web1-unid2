@@ -22,7 +22,7 @@ export default async function signUp(data: FormData) {
 
   if (userExist) {
     return {
-      error: 'User Already exist',
+      error: 'User Already Exist',
     };
   }
 

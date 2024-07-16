@@ -1,19 +1,11 @@
-'use client';
-
-// importing necessary functions
-import { useSession } from 'next-auth/react';
-
 export default function Home() {
-  const { data: session, status } = useSession();
+  return (
+    <div>
+      <h1>
+        uma landing page qualquer
+      </h1>
 
-  if (status === 'authenticated') {
-    return (
-      <p>
-        Signed in as {session.user.email} {session.user.firstName}{' '}
-        {session.user.lastName}
-      </p>
-    );
-  }
-
-  return <a href='/sign-in'>Sign in</a>;
+      <a href="/sign-in">sign-in</a>
+    </div>
+  )
 }
