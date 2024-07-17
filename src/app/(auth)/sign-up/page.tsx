@@ -1,10 +1,9 @@
-import SignUpForm from "./_components/sign-up-form";
+import SignUpForm from './_components/sign-up-form';
 
 export default function SingUp() {
   return (
-    <div className="flex h-screen justify-center items-center">
+    <div className='flex h-screen items-center justify-center'>
       <SignUpForm />
     </div>
-
-  )
-} 
+  );
+}
