@@ -4,7 +4,8 @@ import './globals.css';
 import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
-import SessionWrapper from '@/components/SessionWrapper';
+import SessionWrapper from '@/components/session-wrapper';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -27,10 +28,12 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <SessionWrapper>
-          {children}
-          <Toaster />
-        </SessionWrapper>
+        <ThemeProvider>
+          <SessionWrapper>
+            {children}
+            <Toaster />
+          </SessionWrapper>
+        </ThemeProvider>
       </body>
     </html>
   );
