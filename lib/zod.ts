@@ -25,3 +25,7 @@ export const signUpFormSchema = z
     message: 'Passwords not match',
     path: ['confirmPassword'],
   });
+
+export const sendMessageFormSchema = z.object({
+  message: z.string().trim().min(1, 'the message cannot be empty'),
+});
