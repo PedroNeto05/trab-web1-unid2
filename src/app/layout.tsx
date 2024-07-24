@@ -28,7 +28,12 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ThemeProvider>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
           <SessionWrapper>
             {children}
             <Toaster />
