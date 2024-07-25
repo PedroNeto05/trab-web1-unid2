@@ -26,6 +26,7 @@ interface IMessages {
 export default function Home() {
   const { data: session } = useSession();
   const [messages, setMessages] = useState<IMessages[]>([]);
+  const [connected, setConnected] = useState(false);
   const [ws, setWs] = useState<WebSocket | null>(null);
   const form = useForm<SendMessageFormSchema>({
     resolver: zodResolver(sendMessageFormSchema),
@@ -50,10 +51,11 @@ export default function Home() {
   }
   useEffect(() => {
     const socket = new WebSocket(`ws://${config.host}:3001/ws`);
-
     socket.onopen = () => {
+      setConnected(true);
       console.log('connected');
     };
+
     socket.onmessage = (event) => {
       const msg: IMessages = JSON.parse(event.data);
       setMessages((prevMessages) => {
@@ -63,10 +65,11 @@ export default function Home() {
         if (isDuplicate) {
           return prevMessages;
         }
-        return [...prevMessages, msg];
+        return [msg, ...prevMessages];
       });
     };
     socket.close = () => {
+      setConnected(false);
       console.log('connection close');
     };
     setWs(socket);
@@ -80,24 +83,30 @@ export default function Home() {
 
   return (
     <div className='flex h-screen flex-col'>
-      <header className='flex w-full justify-end border-b p-4'>
+      <header className='flex w-full items-center justify-between border-b p-4'>
+        <div className='flex items-center gap-2'>
+          <div
+            className={`size-3 rounded-full ${connected ? 'bg-green-700' : 'bg-red-600'}`}
+          />
+          <p>{connected ? 'online' : 'offline'}</p>
+        </div>
         <UserNav />
       </header>
-      <main className='flex flex-1 items-center justify-center p-16'>
+      <main className='flex flex-1 items-center justify-center sm:p-16'>
         <Card className='flex size-full flex-col space-y-4 p-4'>
-          <div className='flex h-[648px] w-full flex-col gap-2 overflow-auto p-4'>
+          <div className='flex h-[648px] w-full snap-y snap-mandatory flex-col-reverse gap-2 overflow-y-auto p-4'>
             {messages.map((message) =>
               message.userId === session?.user.id ? (
                 <div className='flex justify-end' key={message.id}>
-                  <Card className='w-fit p-4'>
-                    <p className='max-w-[680px]'>{message.content}</p>
+                  <Card className='w-fit max-w-[680px] break-words p-4'>
+                    <p>{message.content}</p>
                   </Card>
                 </div>
               ) : (
                 <div className='' key={message.id}>
-                  <Card className='w-fit p-4'>
+                  <Card className='w-fit max-w-[680px] break-words p-4'>
                     <h2 className='font-bold'>{message.userName}</h2>
-                    <p className='max-w-[680px]'>{message.content}</p>
+                    <p>{message.content}</p>
                   </Card>
                 </div>
               )
