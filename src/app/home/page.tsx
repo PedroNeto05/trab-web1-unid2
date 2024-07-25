@@ -13,6 +13,7 @@ import { Send } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { v4 as uuidv4 } from 'uuid';
+import config from '@/lib/config';
 
 type SendMessageFormSchema = z.infer<typeof sendMessageFormSchema>;
 
@@ -48,7 +49,7 @@ export default function Home() {
     form.reset();
   }
   useEffect(() => {
-    const socket = new WebSocket('ws://localhost:3001/ws');
+    const socket = new WebSocket(`ws://${config.host}:3001/ws`);
 
     socket.onopen = () => {
       console.log('connected');
