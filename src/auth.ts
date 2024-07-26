@@ -57,7 +57,7 @@ export const {
     },
   },
   pages: {
-    signIn: '/sign-in',
-    newUser: '/sign-up',
+    signIn: '/auth/sign-in',
+    newUser: '/auth/sign-up',
   },
 });

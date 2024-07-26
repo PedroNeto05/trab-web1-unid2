@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       <h1>uma landing page qualquer</h1>
 
-      <Link href='/sign-in'>sign-in</Link>
+      <Link href='/auth/sign-in'>sign-in</Link>
     </div>
   );
 }

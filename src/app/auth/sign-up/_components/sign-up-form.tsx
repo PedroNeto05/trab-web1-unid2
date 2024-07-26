@@ -190,7 +190,7 @@ export default function SignUpForm() {
         </Form>
         <div className='mt-4 text-center text-sm'>
           Already have an account?{' '}
-          <Link href='/sign-in' className='underline'>
+          <Link href='/auth/sign-in' className='underline'>
             Sign in
           </Link>
         </div>

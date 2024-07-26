@@ -13,7 +13,7 @@ export default function middleware(request: NextRequest) {
   }
 
   if (pathname.includes('/home') && !token) {
-    return NextResponse.redirect(new URL(getUrl('/sign-in')));
+    return NextResponse.redirect(new URL(getUrl('/auth/sign-in')));
   }
 }
 
