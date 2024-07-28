@@ -170,7 +170,9 @@ export default function Home() {
           <li>
             <Card className='max-w-72 space-y-2 p-4'>
               <div className='flex justify-center gap-2'>
-                <FaGolang className='size-16' />
+                <Link href='https://go.dev/' target='_blank'>
+                  <FaGolang className='size-16' />
+                </Link>
               </div>
               <p>
                 Golang, ou Go, é uma linguagem de programação desenvolvida pelo
@@ -185,7 +187,9 @@ export default function Home() {
           <li>
             <Card className='max-w-72 space-y-2 p-4'>
               <div className='flex justify-center gap-2'>
-                <RiNextjsFill className='size-16' />
+                <Link href='https://nextjs.org/' target='_blank'>
+                  <RiNextjsFill className='size-16' />
+                </Link>
               </div>
               <p>
                 Next.js é um framework de desenvolvimento React que facilita a
@@ -202,7 +206,9 @@ export default function Home() {
           <li>
             <Card className='max-w-72 space-y-2 p-4'>
               <div className='flex justify-center gap-2'>
-                <SiPrisma className='size-16' />
+                <Link href='https://www.prisma.io/' target='_blank'>
+                  <SiPrisma className='size-16' />
+                </Link>
               </div>
               <p>
                 Prisma ORM é uma ferramenta moderna de mapeamento
@@ -220,7 +226,9 @@ export default function Home() {
           <li>
             <Card className='max-w-72 space-y-2 p-4'>
               <div className='flex justify-center gap-2'>
-                <SiZod className='size-16' />
+                <Link href='https://zod.dev/' target='_blank'>
+                  <SiZod className='size-16' />
+                </Link>
               </div>
               <p>
                 Zod é uma biblioteca de validação de esquemas para TypeScript,
@@ -237,7 +245,9 @@ export default function Home() {
           <li>
             <Card className='max-w-72 space-y-2 p-4'>
               <div className='flex justify-center gap-2'>
-                <SiShadcnui className='size-16' />
+                <Link href='https://ui.shadcn.com/' target='_blank'>
+                  <SiShadcnui className='size-16' />
+                </Link>
               </div>
               <p>
                 ShadCN é uma biblioteca de componentes para React que se integra
@@ -254,7 +264,9 @@ export default function Home() {
           <li>
             <Card className='max-w-72 space-y-2 p-4'>
               <div className='flex justify-center gap-2'>
-                <RiTailwindCssFill className='size-16' />
+                <Link href='https://tailwindcss.com/' target='_blank'>
+                  <RiTailwindCssFill className='size-16' />
+                </Link>
               </div>
               <p>
                 Tailwind CSS é um framework de utilitários CSS que permite aos
