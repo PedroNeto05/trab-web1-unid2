@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,6 +15,7 @@ import { useTheme } from 'next-themes';
 import { signOut } from 'next-auth/react';
 
 export function UserNav() {
+  const { push } = useRouter();
   const { data: session } = useSession();
   const userFullName = `${session?.user.firstName} ${session?.user.lastName}`;
   const { setTheme } = useTheme();
@@ -56,6 +58,13 @@ export function UserNav() {
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setTheme('dark')}>
             Dark Theme
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+
+        <DropdownMenuGroup>
+          <DropdownMenuItem onClick={() => push('/')}>
+            Landing Page
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
